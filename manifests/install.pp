@@ -9,7 +9,8 @@ class guacamole::install (
     Boolean $install_tomcat = true,
   ) {
     $tomcat_version = '8.5.23'
-    $closest_mirror = get_mirrors('https://www.apache.org/dyn/closer.cgi?as_json=1')
+    #Get mirrors function appears to just fail due to HTTP/HTTPS mixup. Don't feel like fixing.
+    $closest_mirror = 'http://mirrors.gigenet.com/apache/'
 
     if $install_tomcat {
       tomcat::install { '/opt/tomcat':
